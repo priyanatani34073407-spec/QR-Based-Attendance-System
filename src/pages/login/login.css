@@ -1,0 +1,196 @@
+.login-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#eef4ff;
+
+    padding:30px;
+
+}
+
+.login-box{
+
+    width:420px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+}
+
+.login-box h1{
+
+    text-align:center;
+
+    color:#1E3A8A;
+
+    margin-bottom:8px;
+
+}
+
+.login-box p{
+
+    text-align:center;
+
+    color:#6B7280;
+
+    margin-bottom:30px;
+
+}
+
+.login-box label{
+
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.login-box input[type=email],
+.password-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #CBD5E1;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+.login-box input:focus{
+
+    outline:none;
+
+    border-color:#2563EB;
+
+}
+
+.password-box{
+
+    position:relative;
+
+}
+
+.password-box input{
+
+    padding-right:70px;
+
+}
+
+.show-btn{
+
+    position:absolute;
+
+    right:10px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    background:none;
+
+    color:#2563EB;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.role-section{
+
+    margin-top:20px;
+
+}
+
+.role-section label{
+
+    display:block;
+
+    margin:8px 0;
+
+    font-weight:500;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:12px;
+
+    background:#2563EB;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#1D4ED8;
+
+}
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#1E3A8A;
+
+    color:white;
+
+    padding:15px 30px;
+}
+.logout-btn{
+    background:#DC2626;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.logout-btn:hover{
+    background:#B91C1C;
+}
+@media(max-width:500px){
+.login-box{
+width:100%;
+padding:25px;
+}
+}
