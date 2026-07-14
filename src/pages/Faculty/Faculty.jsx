@@ -1,10 +1,7 @@
 import "./Faculty.css";
-
 import FacultyCard from "../../components/FacultyCard/FacultyCard";
 import FacultyTable from "../../components/FacultyTable/FacultyTable";
-
 function Faculty() {
-
   const faculty = [
     {
       id: 1,
@@ -28,16 +25,11 @@ function Faculty() {
       email: "arun@gmail.com",
     },
   ];
-
   return (
     <div className="faculty-page">
-
       <FacultyCard faculty={faculty} />
-
       <FacultyTable faculty={faculty} />
-
     </div>
   );
 }
-
 export default Faculty;

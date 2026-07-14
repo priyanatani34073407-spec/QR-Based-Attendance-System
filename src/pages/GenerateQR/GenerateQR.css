@@ -1,127 +1,64 @@
 .generateQR{
-
-padding:20px;
-
-}
-
+    padding:20px;
+    }
 .generateQR h1{
-
-color:#1565C0;
-
-margin-bottom:25px;
-
-}
-
+    color:#1565C0;
+    margin-bottom:25px;
+    }
 .qr-card{
-
-background:white;
-
-padding:30px;
-
-border-radius:15px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-
-max-width:500px;
-
-}
-
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    max-width:500px;
+    }
 .qr-card label{
-
-font-weight:bold;
-
-display:block;
-
-margin-bottom:10px;
-
-}
-
+    font-weight:bold;
+    display:block;
+    margin-bottom:10px;
+    }
 .qr-card select{
-
-width:100%;
-
-padding:12px;
-
-margin-bottom:20px;
-
-border-radius:8px;
-
-border:1px solid #ccc;
-
-}
-
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    }
 .qr-card button{
-
-width:100%;
-
-padding:12px;
-
-background:#1565C0;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-font-size:16px;
-
-cursor:pointer;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-gap:10px;
-
-}
-
+    width:100%;
+    padding:12px;
+    background:#1565C0;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    }
 .qr-card button:hover{
-
-background:#0D47A1;
-
-}
-
+    background:#0D47A1;
+    }
 .qr-box{
-
-margin-top:30px;
-
-text-align:center;
-
-}
-
+    margin-top:30px;
+    text-align:center;
+    }
 .fakeQR{
-
-width:180px;
-
-height:180px;
-
-margin:auto;
-
-border:4px dashed #1565C0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-weight:bold;
-
-font-size:24px;
-
-margin-bottom:20px;
-
-border-radius:10px;
-
-}
-
+    width:180px;
+    height:180px;
+    margin:auto;
+    border:4px dashed #1565C0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:24px;
+    margin-bottom:20px;
+    border-radius:10px;
+    }
 .qr-box h1{
-
-color:#1565C0;
-
-margin:10px 0;
-
-}
+    color:#1565C0;
+    margin:10px 0;
+    }

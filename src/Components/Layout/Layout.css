@@ -3,7 +3,6 @@
     min-height:100vh;
     background:#f5f7fa;
 }
-
 .main-content{
     flex:1;
     margin-left:250px;
@@ -11,12 +10,9 @@
     padding:30px;
     overflow-y:auto;
 }
-
 @media(max-width:768px){
-
 .main-content{
     margin-left:0;
     padding:20px;
-}
-
+    }
 }

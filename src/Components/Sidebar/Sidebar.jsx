@@ -1,6 +1,5 @@
 import "./Sidebar.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import {
   FaTachometerAlt,
   FaUserGraduate,
@@ -12,23 +11,22 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-
 function Sidebar() {
   const navigate = useNavigate();
-
   function handleLogout() {
-    navigate("/");
+    const confirmLogout = window.confirm(
+      "Are you sure you want to logout?"
+    );
+    if (confirmLogout) {
+      navigate("/");
+    }
   }
-
   return (
     <aside className="sidebar">
-
       <div className="sidebar-title">
         <h2>MENU</h2>
       </div>
-
       <nav>
-
         <NavLink to="/dashboard" className="nav-item">
           <FaTachometerAlt />
           <span>Dashboard</span>
@@ -68,19 +66,15 @@ function Sidebar() {
           <FaCog />
           <span>Settings</span>
         </NavLink>
-
       </nav>
-
       <button
         className="logout-btn"
         onClick={handleLogout}
       >
         <FaSignOutAlt />
-        Logout
+        <span>Logout</span>
       </button>
-
     </aside>
   );
 }
-
 export default Sidebar;

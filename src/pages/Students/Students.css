@@ -1,0 +1,17 @@
+.students-page {
+  padding: 25px;
+}
+.students-page h1 {
+  font-size: 30px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .students-page {
+    padding: 15px;
+  }
+  .students-page h1 {
+    font-size: 24px;
+  }
+}

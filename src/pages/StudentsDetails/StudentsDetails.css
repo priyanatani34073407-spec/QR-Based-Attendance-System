@@ -1,12 +1,10 @@
 .details-page{
     padding:30px;
 }
-
 .details-page h1{
     color:#1565C0;
     margin-bottom:20px;
 }
-
 .details-card{
     max-width:500px;
     background:white;
@@ -14,7 +12,6 @@
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
-
 .details-card p{
     margin:15px 0;
     font-size:18px;

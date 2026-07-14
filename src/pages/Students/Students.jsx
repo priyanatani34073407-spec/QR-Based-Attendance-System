@@ -1,50 +1,47 @@
-// import StudentCard from "../../components/StudentCard/StudentCard";
-// import StudentTable from "../../components/StudentTable/StudentTable";
-
-// function Students() {
-//   return (
-//     <>
-//       <StudentCard />
-//       <StudentTable />
-//     </>
-//   );
-// }
-
-// export default Students;
-
-import "./Students.css";
-
+import { useState, useEffect } from "react";
 import StudentCard from "../../components/StudentCard/StudentCard";
-import StudentTable from "../../Components/SubjectsTable/SubjectsTable";
-
+import StudentTable from "../../components/StudentTable/StudentTable";
 function Students() {
-  const students = [
-    {
-      id: 1,
-      name: "Rahul Kumar",
-      rollNo: "22CSE001",
-      branch: "CSE",
-      year: "III",
-    },
-    {
-      id: 2,
-      name: "Priya Sharma",
-      rollNo: "22CSE002",
-      branch: "AI",
-      year: "III",
-    },
-    {
-      id: 3,
-      name: "Arun Kumar",
-      rollNo: "22CSE003",
-      branch: "ECE",
-      year: "II",
-    },
-  ];
+  const [students, setStudents] = useState([]);
+  useEffect(() => {
+    const studentData = [
+      {
+        id: 1,
+        name: "Rahul",
+        rollNo: "22CSE001",
+        department: "CSE",
+        email: "rahul@gmail.com",
+      },
+      {
+        id: 2,
+        name: "Priya",
+        rollNo: "22CSE002",
+        department: "AI",
+        email: "priya@gmail.com",
+      },
+      {
+        id: 3,
+        name: "Arjun",
+        rollNo: "22CSE003",
+        department: "ECE",
+        email: "arjun@gmail.com",
+      },
+    ];
+    setStudents(studentData);
+  }, []);
+  function deleteStudent(id) {
+    const updatedStudents = students.filter(
+      (student) => student.id !== id
+    );
+    setStudents(updatedStudents);
+  }
   return (
-    <div className="students-page">
+    <div>
       <StudentCard students={students} />
-      <StudentTable students={students} />
+      <StudentTable
+        students={students}
+        deleteStudent={deleteStudent}
+      />
     </div>
   );
 }

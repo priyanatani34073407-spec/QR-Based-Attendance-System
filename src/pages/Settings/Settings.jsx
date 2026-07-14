@@ -1,56 +1,57 @@
-import { useState } from "react";
 import "./Settings.css";
-
+import { useState } from "react";
 function Settings() {
-
-  const [collegeName,setCollegeName]=useState("ABC Engineering College");
-
-  const [academicYear,setAcademicYear]=useState("2026-27");
-
+  const [profile, setProfile] = useState({
+    admin: "Admin",
+    email: "admin@gmail.com",
+    college: "Chalapathi Institute of Technology",
+  });
+  function handleChange(e) {
+    setProfile({
+      ...profile,
+      [e.target.name]: e.target.value,
+    });
+  }
+  function saveSettings() {
+    localStorage.setItem(
+      "adminProfile",
+      JSON.stringify(profile)
+    );
+    alert("Settings Saved Successfully");
+  }
   return (
-
     <div className="settings-page">
-
       <h1>Settings</h1>
-
-      <div className="settings-card">
-
-        <label>College Name</label>
-
+      <div className="settings-form">
+        <label>Administrator Name</label>
         <input
-
-        type="text"
-
-        value={collegeName}
-
-        onChange={(e)=>setCollegeName(e.target.value)}
-
+          type="text"
+          name="admin"
+          value={profile.admin}
+          onChange={handleChange}
         />
 
-        <label>Academic Year</label>
-
+        <label>Email</label>
         <input
-
-        type="text"
-
-        value={academicYear}
-
-        onChange={(e)=>setAcademicYear(e.target.value)}
-
+          type="email"
+          name="email"
+          value={profile.email}
+          onChange={handleChange}
         />
 
-        <button>
+        <label>College</label>
+        <input
+          type="text"
+          name="college"
+          value={profile.college}
+          onChange={handleChange}
+        />
 
+        <button onClick={saveSettings}>
           Save Settings
-
         </button>
-
       </div>
-
     </div>
-
   );
-
 }
-
 export default Settings;

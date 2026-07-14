@@ -1,12 +1,8 @@
 import "./Subjects.css";
-
 import SubjectCard from "../../components/SubjectCard/SubjectCard";
 import SubjectTable from "../../components/SubjectsTable/SubjectsTable";
-
 function Subjects() {
-
   const subjects = [
-
     {
       id: 1,
       name: "React JS",
@@ -33,21 +29,12 @@ function Subjects() {
       semester: "VI",
       credits: 4,
     },
-
   ];
-
   return (
-
     <div className="subjects-page">
-
       <SubjectCard subjects={subjects} />
-
       <SubjectTable subjects={subjects} />
-
     </div>
-
   );
-
 }
-
 export default Subjects;
