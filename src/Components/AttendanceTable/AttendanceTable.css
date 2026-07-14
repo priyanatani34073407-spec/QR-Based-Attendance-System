@@ -1,0 +1,71 @@
+.attendance-table{
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.attendance-table h2{
+
+color:#1565C0;
+
+margin-bottom:20px;
+
+}
+
+.attendance-table table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.attendance-table th{
+
+background:#1565C0;
+
+color:white;
+
+padding:12px;
+
+}
+
+.attendance-table td{
+
+padding:12px;
+
+text-align:center;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.present{
+
+background:#4CAF50;
+
+color:white;
+
+padding:5px 10px;
+
+border-radius:5px;
+
+}
+
+.absent{
+
+background:#F44336;
+
+color:white;
+
+padding:5px 10px;
+
+border-radius:5px;
+
+}

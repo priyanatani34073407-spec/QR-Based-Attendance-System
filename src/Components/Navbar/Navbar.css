@@ -1,33 +1,66 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2563eb;
-  padding: 15px 30px;
-  color: white;
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    height:70px;
+
+    background:#1565C0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 30px;
+
+    color:white;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+
+    z-index:1000;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+.navbar-left h2{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:600;
+
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  align-items: center;
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
 }
 
-.nav-links li {
-  cursor: pointer;
+.nav-icon{
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
 
-.logout-btn {
-  background-color: white;
-  color: #2563eb;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+.nav-icon:hover{
+
+    color:#FFD54F;
+
+    transform:scale(1.15);
+
+}
+
+.profile-icon{
+
+    font-size:34px;
+
 }

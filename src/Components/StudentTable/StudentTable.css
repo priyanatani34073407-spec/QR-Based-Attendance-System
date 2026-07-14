@@ -1,0 +1,30 @@
+.student-table{
+  margin-top:30px;
+}
+
+.student-table table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+}
+
+.student-table th,
+.student-table td{
+  padding:12px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+
+.student-table th{
+  background:#1565C0;
+  color:white;
+}
+
+.student-table button{
+  background:#1565C0;
+  color:white;
+  border:none;
+  padding:8px 15px;
+  border-radius:5px;
+  cursor:pointer;
+}

@@ -1,24 +1,25 @@
 import "./Navbar.css";
+import { FaBell, FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="logo">
-        QR Attendance System
+    <header className="navbar">
+
+      <div className="navbar-left">
+
+        <h2>QR Attendance System</h2>
+
       </div>
 
-      <ul className="nav-links">
-        <li>Home</li>
-        <li>Dashboard</li>
-        <li>Attendance</li>
-        <li>Profile</li>
-        <li>
-          <button className="logout-btn">
-            Logout
-          </button>
-        </li>
-      </ul>
-    </nav>
+      <div className="navbar-right">
+
+        <FaBell className="nav-icon" />
+
+        <FaUserCircle className="nav-icon profile-icon" />
+
+      </div>
+
+    </header>
   );
 }
 
