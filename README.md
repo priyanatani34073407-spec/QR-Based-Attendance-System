@@ -98,7 +98,7 @@ Admin@123
 
 ### Login Page
 
-![Login](Screenshots/Login.png)
+
 
 ### Dashboard
 
