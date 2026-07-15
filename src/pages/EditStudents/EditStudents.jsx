@@ -1,78 +1,107 @@
-import "./EditStudents.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./EditStudents.css";
 
 function EditStudents() {
-  const navigate = useNavigate();
   const { id } = useParams();
-  const [student, setStudent] = useState({
-    name: "Rahul",
-    rollNo: "22CSE001",
-    department: "CSE",
-    email: "rahul@gmail.com",
-  });
-  function handleChange(e) {
-    setStudent({
-      ...student,
-      [e.target.name]: e.target.value,
-    });
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [department, setDepartment] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const students =
+      JSON.parse(localStorage.getItem("students")) || [];
+
+    const student = students.find(
+      (student) => String(student.id) === id
+    );
+
+    if (student) {
+      setName(student.name);
+      setRollNo(student.rollNo);
+      setDepartment(student.department);
+      setEmail(student.email);
+    }
+  }, [id]);
+
+  function updateStudent() {
+    if (
+      name === "" ||
+      rollNo === "" ||
+      department === "" ||
+      email === ""
+    ) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const students =
+      JSON.parse(localStorage.getItem("students")) || [];
+
+    const updatedStudents = students.map((student) =>
+      String(student.id) === id
+        ? {
+            ...student,
+            name,
+            rollNo,
+            department,
+            email,
+          }
+        : student
+    );
+
+    localStorage.setItem(
+      "students",
+      JSON.stringify(updatedStudents)
+    );
+
     alert("Student Updated Successfully");
+
     navigate("/students");
   }
+
   return (
-    <div className="edit-student">
+    <div className="edit-page">
+
       <h1>Edit Student</h1>
-      <h3>Student ID : {id}</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Student Name"
-          value={student.name}
-          onChange={handleChange}
-        />
 
-        <input
-          type="text"
-          name="rollNo"
-          placeholder="Roll Number"
-          value={student.rollNo}
-          onChange={handleChange}
-        />
+      <input
+        type="text"
+        placeholder="Student Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
-        <input
-          type="text"
-          name="department"
-          placeholder="Department"
-          value={student.department}
-          onChange={handleChange}
-        />
+      <input
+        type="text"
+        placeholder="Roll Number"
+        value={rollNo}
+        onChange={(e) => setRollNo(e.target.value)}
+      />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={student.email}
-          onChange={handleChange}
-        />
-        <div className="btn-group">
+      <input
+        type="text"
+        placeholder="Department"
+        value={department}
+        onChange={(e) => setDepartment(e.target.value)}
+      />
 
-          <button type="submit">
-            Update Student
-          </button>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-          <button
-            type="button"
-            onClick={() => navigate("/students")}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+      <button onClick={updateStudent}>
+        Update Student
+      </button>
+
     </div>
   );
 }
+
 export default EditStudents;

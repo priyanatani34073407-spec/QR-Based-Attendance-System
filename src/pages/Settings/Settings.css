@@ -1,32 +1,32 @@
 .settings-page{
-padding:30px;
+    padding:30px;
 }
-.settings-form{
-max-width:600px;
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+
+.theme-box{
+    margin-top:30px;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    width:350px;
 }
-.settings-form label{
-display:block;
-margin-top:15px;
-font-weight:bold;
+
+.theme-box h2{
+    margin-bottom:20px;
 }
-.settings-form input{
-width:100%;
-padding:10px;
-margin-top:8px;
-border:1px solid #ccc;
-border-radius:6px;
+
+.theme-box button{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    background:#2563eb;
+    color:white;
 }
-.settings-form button{
-margin-top:20px;
-padding:12px;
-width:100%;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
+
+.theme-box button:hover{
+    background:#1d4ed8;
 }

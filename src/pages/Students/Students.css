@@ -1,17 +1,28 @@
-.students-page {
-  padding: 25px;
+.students-page{
+    padding:20px;
 }
-.students-page h1 {
-  font-size: 30px;
-  color: #1e3a8a;
-  margin-bottom: 20px;
-  font-weight: 700;
+
+.add-form{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:30px;
 }
-@media (max-width: 768px) {
-  .students-page {
-    padding: 15px;
-  }
-  .students-page h1 {
-    font-size: 24px;
-  }
+
+.add-form input{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.add-form button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.add-form button:hover{
+    background:#1d4ed8;
 }

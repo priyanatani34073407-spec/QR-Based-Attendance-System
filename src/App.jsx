@@ -1,8 +1,15 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+
+// Components
 import Layout from "./Components/Layout/Layout";
-// Pages
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+
+// Authentication Pages
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+
+// Main Pages
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Students from "./pages/Students/Students";
 import Faculty from "./pages/Faculty/Faculty";
@@ -11,27 +18,41 @@ import Attendance from "./pages/Attendance/Attendance";
 import GenerateQR from "./pages/GenerateQR/GenerateQR";
 import Reports from "./pages/Reports/Reports";
 import Settings from "./pages/Settings/Settings";
+
 // Details Pages
 import StudentsDetails from "./pages/StudentsDetails/StudentsDetails";
 import FacultyDetails from "./pages/FacultyDetails/FacultyDetails";
 import SubjectsDetails from "./pages/SubjectsDetails/SubjectsDetails";
+import EditStudents from "./pages/EditStudents/EditStudents";
+
 // 404 Page
 import NotFound from "./pages/NotFound/NotFound";
-import EditStudents from "./pages/EditStudents/EditStudents";
+
 function App() {
   return (
     <Routes>
 
       {/* Login */}
-      <Route path="/" element={<Login />} />
+      <Route
+        path="/"
+        element={<Login />}
+      />
+
+      {/* Register */}
+      <Route
+        path="/register"
+        element={<Register />}
+      />
 
       {/* Dashboard */}
       <Route
         path="/dashboard"
         element={
-          <Layout>
-            <Dashboard />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Dashboard />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -39,9 +60,35 @@ function App() {
       <Route
         path="/students"
         element={
-          <Layout>
-            <Students />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Students />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Student Details */}
+      <Route
+        path="/student/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <StudentsDetails />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Edit Student */}
+      <Route
+        path="/student/edit/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <EditStudents />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -49,9 +96,23 @@ function App() {
       <Route
         path="/faculty"
         element={
-          <Layout>
-            <Faculty />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Faculty />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Faculty Details */}
+      <Route
+        path="/faculty/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <FacultyDetails />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -59,9 +120,23 @@ function App() {
       <Route
         path="/subjects"
         element={
-          <Layout>
-            <Subjects />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Subjects />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Subject Details */}
+      <Route
+        path="/subject/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <SubjectsDetails />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -69,9 +144,11 @@ function App() {
       <Route
         path="/attendance"
         element={
-          <Layout>
-            <Attendance />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Attendance />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -79,9 +156,11 @@ function App() {
       <Route
         path="/generate-qr"
         element={
-          <Layout>
-            <GenerateQR />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <GenerateQR />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -89,9 +168,11 @@ function App() {
       <Route
         path="/reports"
         element={
-          <Layout>
-            <Reports />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Reports />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
@@ -99,50 +180,19 @@ function App() {
       <Route
         path="/settings"
         element={
-          <Layout>
-            <Settings />
-          </Layout>
+          <ProtectedRoute>
+            <Layout>
+              <Settings />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 
-      {/* Dynamic Routes */}
+      {/* 404 */}
       <Route
-        path="/student/:id"
-        element={
-          <Layout>
-            <StudentsDetails />
-          </Layout>
-        }
+        path="*"
+        element={<NotFound />}
       />
-
-      <Route
-        path="/faculty/:id"
-        element={
-          <Layout>
-            <FacultyDetails />
-          </Layout>
-        }
-      />
-
-      <Route
-        path="/subject/:id"
-        element={
-          <Layout>
-            <SubjectsDetails />
-          </Layout>
-        }
-      />
-
-      <Route
-        path="/student/edit/:id"
-        element={
-          <Layout>
-            <EditStudents />
-          </Layout>
-        }
-      />
-      {/* 404 Page */}
-      <Route path="*" element={<NotFound />} />
 
     </Routes>
   );
