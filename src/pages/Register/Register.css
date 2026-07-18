@@ -1,139 +1,281 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/* ===========================
+   Reset
+=========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-
+/* ===========================
+   Register Container
+=========================== */
 .register-container {
+  position: relative;
   display: flex;
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #4338ca 0%,
+    #4f46e5 45%,
+    #7c3aed 100%
+  );
 }
+/* ===========================
+   Animated Background
+=========================== */
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .35;
+  animation: float 10s ease-in-out infinite;
+}
+
+.circle1 {
+  width: 320px;
+  height: 320px;
+  background: #22d3ee;
+  top: -120px;
+  left: -120px;
+}
+
+.circle2 {
+  width: 260px;
+  height: 260px;
+  background: #a855f7;
+  bottom: -80px;
+  right: -80px;
+  animation-delay: 2s;
+}
+
+.circle3 {
+  width: 180px;
+  height: 180px;
+  background: #60a5fa;
+  top: 45%;
+  left: 45%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ===========================
+   Left Side
+=========================== */
 
 .register-left {
   flex: 1;
-  background: linear-gradient(135deg, #0d6efd, #0a58ca);
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  text-align: center;
+  color: white;
+  padding: 60px;
+  z-index: 2;
+}
+
+.logo-wrapper {
+  width: 160px;
+  height: 160px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  margin-bottom: 30px;
 }
 
 .register-logo {
-  font-size: 80px;
-  margin-bottom: 20px;
+  font-size: 90px;
 }
 
 .register-left h1 {
-  font-size: 38px;
+  font-size: 46px;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
 .register-left p {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.8;
 }
+
+/* ===========================
+   Right Side
+=========================== */
 
 .register-right {
   flex: 1;
-  background: #f5f7fb;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 40px;
+  z-index: 2;
 }
 
+/* ===========================
+   Card
+=========================== */
+
 .register-card {
-  width: 420px;
-  background: #fff;
-  padding: 35px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 460px;
+  padding: 45px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 25px 50px rgba(0,0,0,.25);
+  color: white;
 }
 
 .register-card h2 {
   text-align: center;
-  color: #0d6efd;
-  margin-bottom: 25px;
+  font-size: 34px;
+  margin-bottom: 8px;
 }
+.subtitle {
+  text-align: center;
+  color: #e2e8f0;
+  margin-bottom: 35px;
+}
+
+/* ===========================
+   Inputs
+=========================== */
 
 .input-group {
-  display: flex;
-  align-items: center;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  margin-bottom: 18px;
-  padding: 0 12px;
-  background: #fff;
+  position: relative;
+  margin-bottom: 22px;
 }
-
-.input-icon {
-  color: #0d6efd;
-}
-
 .input-group input {
-  flex: 1;
+  width: 100%;
+  padding: 16px 50px;
   border: none;
   outline: none;
-  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.15);
+  color: white;
   font-size: 15px;
 }
-
-.eye {
-  cursor: pointer;
-  color: #666;
+.input-group input::placeholder {
+  color: #e2e8f0;
 }
-
-.register-btn {
-  width: 100%;
-  padding: 14px;
-  background: #0d6efd;
+.input-group input:focus {
+  box-shadow: 0 0 0 3px rgba(255,255,255,.25);
+}
+.input-icon {
+  position: absolute;
+  left: 18px;
+  top: 17px;
   color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 17px;
+}
+.eye {
+  position: absolute;
+  right: 18px;
+  top: 17px;
+  color: white;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.register-btn:hover {
-  background: #084298;
+/* ===========================
+   Buttons
+=========================== */
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
 }
-
+.buttons button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+.buttons button:first-child {
+  background: white;
+  color: #4f46e5;
+}
+.buttons button:first-child:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(255,255,255,.3);
+}
+.clear {
+  background: #ef4444 !important;
+  color: white;
+}
+.clear:hover {
+  background: #dc2626 !important;
+  transform: translateY(-3px);
+}
+/* ===========================
+   Message
+=========================== */
 .message {
-  color: red;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.login-link {
   text-align: center;
   margin-top: 20px;
+  color: #fde68a;
+  font-weight: 600;
 }
 
+/* ===========================
+   Login Link
+=========================== */
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  color: white;
+}
 .login-link a {
+  color: #bfdbfe;
+  margin-left: 6px;
+  font-weight: 600;
   text-decoration: none;
-  color: #0d6efd;
-  font-weight: bold;
 }
-
 .login-link a:hover {
-  text-decoration: underline;
+  color: white;
 }
-
-@media (max-width: 768px) {
-  .register-container {
-    flex-direction: column;
-  }
-
-  .register-left {
-    padding: 30px;
-  }
-
-  .register-card {
-    width: 90%;
-    margin: 30px 0;
-  }
+/* ===========================
+   Responsive
+=========================== */
+@media(max-width:992px){
+.register-container{
+flex-direction:column;
+}
+.register-left{
+padding:50px 20px;
+}
+.register-left h1{
+font-size:36px;
+}
+.register-left p{
+font-size:18px;
+}
+.register-card{
+width:100%;
+max-width:430px;
+}
 }
