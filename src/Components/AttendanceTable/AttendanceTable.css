@@ -1,22 +1,31 @@
-.attendance-table{
-background:white;
-padding:20px;
-border-radius:10px;
+.table-container{
+    background:white;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
 table{
-width:100%;
-border-collapse:collapse;
+    width:100%;
+    border-collapse:collapse;
 }
-th,td{
-padding:12px;
-text-align:center;
-border-bottom:1px solid #ddd;
+th{
+    background:#eef2ff;
+    color:#4f46e5;
+    padding:18px;
 }
-.present{
-color:green;
-font-weight:bold;
+td{
+    padding:18px;
+    border-bottom:1px solid #edf2f7;
 }
-.absent{
-color:red;
-font-weight:bold;
+tr:hover{
+    background:#f8fafc;
+}
+body.dark .table-container{
+    background:#1e293b;
+}
+body.dark th{
+    background:#334155;
+}
+body.dark tr:hover{
+    background:#273549;
 }
