@@ -1,7 +1,10 @@
+import { FaChalkboardTeacher, FaUserPlus } from "react-icons/fa";
 import "./Faculty.css";
 import FacultyCard from "../../components/FacultyCard/FacultyCard";
 import FacultyTable from "../../components/FacultyTable/FacultyTable";
+
 function Faculty() {
+
   const faculty = [
     {
       id: 1,
@@ -25,11 +28,41 @@ function Faculty() {
       email: "arun@gmail.com",
     },
   ];
+
   return (
     <div className="faculty-page">
+
+      <div className="faculty-header">
+
+        <div>
+
+          <h1>
+            <FaChalkboardTeacher />
+            Faculty Management
+          </h1>
+
+          <p>
+            Manage faculty members, departments and subjects.
+          </p>
+
+        </div>
+
+        <button className="add-faculty-btn">
+
+          <FaUserPlus />
+
+          Add Faculty
+
+        </button>
+
+      </div>
+
       <FacultyCard faculty={faculty} />
+
       <FacultyTable faculty={faculty} />
+
     </div>
   );
 }
+
 export default Faculty;
