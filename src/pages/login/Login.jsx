@@ -31,8 +31,8 @@ function Login() {
   }, [navigate]);
 
   function handleLogin() {
-    if (email === "" || password === "") {
-      setMessage("Please fill all fields.");
+    if (email.trim() === "" || password.trim() === "") {
+      setMessage("Please fill in all fields.");
       return;
     }
 
@@ -77,40 +77,59 @@ function Login() {
 
   return (
     <div className="login-container">
+
+      {/* Background Animation */}
+      <div className="bg-circle circle1"></div>
+      <div className="bg-circle circle2"></div>
+      <div className="bg-circle circle3"></div>
+
+      {/* Left Section */}
       <div className="login-left">
-        <FaQrcode className="login-logo" />
+
+        <div className="logo-wrapper">
+          <FaQrcode className="login-logo" />
+        </div>
 
         <h1>QR Attendance System</h1>
 
         <p>
           Smart Attendance Management
           <br />
-          using React
+          for Modern Classrooms
         </p>
+
       </div>
 
+      {/* Right Section */}
       <div className="login-right">
+
         <div className="login-card">
+
           <h2>Welcome Back 👋</h2>
 
           <p className="subtitle">
-            Login to continue
+            Sign in to access your dashboard
           </p>
 
+          {/* Email */}
           <div className="input-group">
+
             <FaUser className="input-icon" />
 
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Enter Email Address"
               value={email}
               onChange={(e) =>
                 setEmail(e.target.value)
               }
             />
+
           </div>
 
+          {/* Password */}
           <div className="input-group">
+
             <FaLock className="input-icon" />
 
             <input
@@ -119,7 +138,7 @@ function Login() {
                   ? "text"
                   : "password"
               }
-              placeholder="Password"
+              placeholder="Enter Password"
               value={password}
               onChange={(e) =>
                 setPassword(e.target.value)
@@ -138,14 +157,19 @@ function Login() {
                 <FaEye />
               )}
             </span>
+
           </div>
 
+          {/* Buttons */}
           <div className="buttons">
+
             <button
               onClick={handleLogin}
               disabled={loading}
             >
-              {loading ? "Logging..." : "Login"}
+              {loading
+                ? "Logging In..."
+                : "Login"}
             </button>
 
             <button
@@ -154,31 +178,45 @@ function Login() {
             >
               Clear
             </button>
+
           </div>
 
+          {/* Error */}
           {message && (
             <p className="message">
               {message}
             </p>
           )}
 
-          <p className="demo">
-            <strong>Registered User Login</strong>
-          </p>
+          {/* Demo */}
+          <div className="demo">
 
-          <p
-            style={{
-              textAlign: "center",
-              marginTop: "15px",
-            }}
-          >
-            Don't have an account?{" "}
+            <strong>
+              Registered User Login
+            </strong>
+
+            <p>
+              Use your registered email and
+              password to continue.
+            </p>
+
+          </div>
+
+          {/* Register */}
+          <p className="register-link">
+
+            Don't have an account?
+
             <Link to="/register">
               Register
             </Link>
+
           </p>
+
         </div>
+
       </div>
+
     </div>
   );
 }
