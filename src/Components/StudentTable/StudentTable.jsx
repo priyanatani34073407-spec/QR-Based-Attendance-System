@@ -1,31 +1,83 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  FaSearch,
+  FaEye,
+  FaEdit,
+  FaTrash,
+} from "react-icons/fa";
 import "./StudentTable.css";
 
 function StudentTable({ students, deleteStudent }) {
   const navigate = useNavigate();
 
-  return (
-    <div className="student-table">
+  const [search, setSearch] = useState("");
 
-      <h2>Students List</h2>
+  const filteredStudents = students.filter(
+    (student) =>
+      student.name
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      student.rollNo
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      student.department
+        .toLowerCase()
+        .includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="table-container">
+
+      <div className="table-header">
+
+        <h2>Students List</h2>
+
+        <div className="search-box">
+
+          <FaSearch className="search-icon" />
+
+          <input
+            type="text"
+            placeholder="Search Student..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
+
+        </div>
+
+      </div>
 
       <table>
 
         <thead>
+
           <tr>
+
             <th>ID</th>
+
             <th>Name</th>
+
             <th>Roll No</th>
+
             <th>Department</th>
+
             <th>Email</th>
+
             <th>Actions</th>
+
           </tr>
+
         </thead>
 
         <tbody>
 
-          {students.length > 0 ? (
-            students.map((student) => (
+          {filteredStudents.length > 0 ? (
+
+            filteredStudents.map((student) => (
+
               <tr key={student.id}>
 
                 <td>{student.id}</td>
@@ -34,47 +86,74 @@ function StudentTable({ students, deleteStudent }) {
 
                 <td>{student.rollNo}</td>
 
-                <td>{student.department}</td>
+                <td>
+
+                  <span className="dept-badge">
+                    {student.department}
+                  </span>
+
+                </td>
 
                 <td>{student.email}</td>
 
                 <td>
 
-                  <button
-                    className="edit-btn"
-                    onClick={() =>
-                      navigate(`/student/edit/${student.id}`)
-                    }
-                  >
-                    Edit
-                  </button>
+                  <div className="action-buttons">
 
-                  <button
-                    className="delete-btn"
-                    onClick={() => {
-                      const confirmDelete =
-                        window.confirm(
-                          "Are you sure you want to delete this student?"
-                        );
-
-                      if (confirmDelete) {
-                        deleteStudent(student.id);
+                    <button
+                      className="view-btn"
+                      onClick={() =>
+                        navigate(`/student/${student.id}`)
                       }
-                    }}
-                  >
-                    Delete
-                  </button>
+                    >
+                      <FaEye />
+                    </button>
+
+                    <button
+                      className="edit-btn"
+                      onClick={() =>
+                        navigate(`/student/edit/${student.id}`)
+                      }
+                    >
+                      <FaEdit />
+                    </button>
+
+                    <button
+                      className="delete-btn"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Delete this student?"
+                          )
+                        ) {
+                          deleteStudent(student.id);
+                        }
+                      }}
+                    >
+                      <FaTrash />
+                    </button>
+
+                  </div>
 
                 </td>
 
               </tr>
+
             ))
+
           ) : (
+
             <tr>
-              <td colSpan="6">
+
+              <td
+                colSpan="6"
+                className="empty-table"
+              >
                 No Students Found
               </td>
+
             </tr>
+
           )}
 
         </tbody>

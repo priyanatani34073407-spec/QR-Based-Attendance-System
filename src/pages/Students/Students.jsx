@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaUserPlus } from "react-icons/fa";
 import StudentCard from "../../components/StudentCard/StudentCard";
 import StudentTable from "../../components/StudentTable/StudentTable";
 import "./Students.css";
@@ -54,12 +55,12 @@ function Students() {
 
   function addStudent() {
     if (
-      name === "" ||
-      rollNo === "" ||
-      department === "" ||
-      email === ""
+      name.trim() === "" ||
+      rollNo.trim() === "" ||
+      department.trim() === "" ||
+      email.trim() === ""
     ) {
-      alert("Please fill all fields");
+      alert("Please fill all fields.");
       return;
     }
 
@@ -105,7 +106,23 @@ function Students() {
   return (
     <div className="students-page">
 
-      <h1>Students</h1>
+      {/* Page Header */}
+
+      <div className="students-header">
+
+        <div>
+
+          <h1>Students Management</h1>
+
+          <p>
+            Manage all student records from one place.
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* Add Student Form */}
 
       <div className="add-form">
 
@@ -138,7 +155,7 @@ function Students() {
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) =>
             setEmail(e.target.value)
@@ -146,12 +163,17 @@ function Students() {
         />
 
         <button onClick={addStudent}>
-          Add Student
+          <FaUserPlus />
+          <span>Add Student</span>
         </button>
 
       </div>
 
+      {/* Student Summary Cards */}
+
       <StudentCard students={students} />
+
+      {/* Student Table */}
 
       <StudentTable
         students={students}
