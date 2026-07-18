@@ -26,18 +26,27 @@ function Sidebar() {
 
     if (confirmLogout) {
       localStorage.removeItem("currentUser");
+      sessionStorage.removeItem("lastPage");
       navigate("/");
     }
   }
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-title">
-        <h2>MENU</h2>
+      {/* Logo */}
+      <div className="sidebar-header">
+        <div className="logo">
+          <FaQrcode className="logo-icon" />
+        </div>
+
+        <div>
+          <h2>QR Attend</h2>
+          <p>Attendance System</p>
+        </div>
       </div>
 
-      <nav>
-
+      {/* Navigation */}
+      <nav className="sidebar-menu">
         <NavLink
           to="/dashboard"
           className="nav-item"
@@ -109,17 +118,27 @@ function Sidebar() {
           <FaCog />
           <span>Settings</span>
         </NavLink>
-
       </nav>
 
-      <button
-        className="logout-btn"
-        onClick={handleLogout}
-      >
-        <FaSignOutAlt />
-        <span>Logout</span>
-      </button>
+      {/* Footer */}
+      <div className="sidebar-footer">
+        <div className="admin-box">
+          <div className="status"></div>
 
+          <div>
+            <h4>Administrator</h4>
+            <p>Online</p>
+          </div>
+        </div>
+
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+        >
+          <FaSignOutAlt />
+          <span>Logout</span>
+        </button>
+      </div>
     </aside>
   );
 }

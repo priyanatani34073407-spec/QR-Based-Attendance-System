@@ -7,14 +7,18 @@ function Layout({ children }) {
   return (
     <>
       <Navbar />
+
       <div className="layout-container">
         <Sidebar />
-        <div className="main-content">
+
+        <main className="main-content">
           {children}
-        </div>
+        </main>
       </div>
+
       <Footer />
     </>
   );
 }
+
 export default Layout;
