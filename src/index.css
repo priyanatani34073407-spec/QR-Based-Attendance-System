@@ -1,83 +1,223 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+/* ===========================
+   Google Font
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ===========================
+   Root Variables
+=========================== */
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #06b6d4;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --bg: #f8fafc;
+  --surface: #ffffff;
+
+  --text: #1e293b;
+  --text-light: #64748b;
+
+  --border: #e2e8f0;
+
+  --radius: 16px;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --transition: all 0.35s ease;
 }
 
-body{
-background:#f4f7fb;
+/* ===========================
+   Reset
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a{
-text-decoration:none;
+html {
+  scroll-behavior: smooth;
 }
 
-button{
-cursor:pointer;
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+  overflow-x: hidden;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
+/* ===========================
+   Dark Theme
+=========================== */
+body.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f8fafc;
+  --text-light: #cbd5e1;
+  --border: #334155;
+
+  background: var(--bg);
+  color: var(--text);
 }
 
-th,td{
-padding:12px;
-text-align:center;
-border-bottom:1px solid #ddd;
+/* ===========================
+   Scrollbar
+=========================== */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 20px;
+}
+
+/* ===========================
+   Links
+=========================== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===========================
+   Images
+=========================== */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+button {
+  padding: 12px 22px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: var(--transition);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.35);
+}
+
+/* ===========================
+   Inputs
+=========================== */
 input,
-select{
-width:100%;
-padding:10px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:8px;
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 15px;
+
+  transition: var(--transition);
 }
 
-button{
-padding:10px 18px;
-border:none;
-border-radius:8px;
-background:#1565C0;
-color:white;
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-button:hover{
-background:#0D47A1;
-}
-body.light{
-    background:#f5f7fa;
-    color:#222;
-    transition:.3s;
+/* ===========================
+   Tables
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  background: var(--surface);
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
 }
 
-body.dark{
-    background:#1e293b;
-    color:white;
-    transition:.3s;
+th {
+  padding: 18px;
+  background: var(--primary);
+  color: white;
 }
 
-body.dark .card,
-body.dark table,
-body.dark .theme-box,
-body.dark .login-card,
-body.dark .register-card{
-    background:#334155;
-    color:white;
+td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
 }
 
-body.dark input{
-    background:#475569;
-    color:white;
+tr:hover {
+  background: rgba(99, 102, 241, 0.05);
 }
 
-body.dark th{
-    background:#0f172a;
+/* ===========================
+   Cards
+=========================== */
+.card {
+  padding: 24px;
+  border-radius: 20px;
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow);
+
+  transition: var(--transition);
 }
 
-body.dark td{
-    color:white;
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* ===========================
+   Headings
+=========================== */
+h1 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light);
+  line-height: 1.7;
 }

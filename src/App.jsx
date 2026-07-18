@@ -3,8 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Components
 import Layout from "./Components/Layout/Layout";
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-
+import ProtectedRouter from "./Components/ProtectedRouter/ProtectedRouter";
 // Authentication Pages
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -48,11 +47,11 @@ function App() {
       <Route
         path="/dashboard"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Dashboard />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -60,11 +59,11 @@ function App() {
       <Route
         path="/students"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Students />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -72,11 +71,11 @@ function App() {
       <Route
         path="/student/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <StudentsDetails />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -84,11 +83,11 @@ function App() {
       <Route
         path="/student/edit/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <EditStudents />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -96,11 +95,11 @@ function App() {
       <Route
         path="/faculty"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Faculty />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -108,11 +107,11 @@ function App() {
       <Route
         path="/faculty/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <FacultyDetails />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -120,11 +119,11 @@ function App() {
       <Route
         path="/subjects"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Subjects />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -132,11 +131,11 @@ function App() {
       <Route
         path="/subject/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <SubjectsDetails />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -144,11 +143,11 @@ function App() {
       <Route
         path="/attendance"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Attendance />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -156,11 +155,11 @@ function App() {
       <Route
         path="/generate-qr"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <GenerateQR />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -168,11 +167,11 @@ function App() {
       <Route
         path="/reports"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Reports />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 
@@ -180,11 +179,11 @@ function App() {
       <Route
         path="/settings"
         element={
-          <ProtectedRoute>
+          <ProtectedRouter>
             <Layout>
               <Settings />
             </Layout>
-          </ProtectedRoute>
+          </ProtectedRouter>
         }
       />
 

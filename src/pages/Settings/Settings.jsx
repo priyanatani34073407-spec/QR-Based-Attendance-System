@@ -4,7 +4,7 @@ import "./Settings.css";
 function Settings() {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
-  );A
+  );
 
   useEffect(() => {
     document.body.className = theme;
