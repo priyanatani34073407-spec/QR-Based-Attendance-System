@@ -8,43 +8,38 @@ import {
 } from "react-icons/fa";
 import "./FacultyTable.css";
 
-function FacultyTable({ faculty }) {
+function FacultyTable({ faculty = [], deleteFaculty }) {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+
   const filteredFaculty = faculty.filter(
     (teacher) =>
-      teacher.name
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      teacher.department
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      teacher.subject
-        .toLowerCase()
-        .includes(search.toLowerCase())
+      teacher.name.toLowerCase().includes(search.toLowerCase()) ||
+      teacher.department.toLowerCase().includes(search.toLowerCase()) ||
+      teacher.subject.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="table-container">
       <div className="table-header">
         <h2>Faculty List</h2>
+
         <div className="search-box">
           <FaSearch className="search-icon" />
+
           <input
             type="text"
             placeholder="Search Faculty..."
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
+            onChange={(e) => setSearch(e.target.value)}
           />
-
         </div>
       </div>
+
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>S.No</th>
             <th>Name</th>
             <th>Department</th>
             <th>Subject</th>
@@ -52,39 +47,61 @@ function FacultyTable({ faculty }) {
             <th>Actions</th>
           </tr>
         </thead>
+
         <tbody>
           {filteredFaculty.length > 0 ? (
-            filteredFaculty.map((teacher) => (
-              <tr key={teacher.id}>
-                <td>{teacher.id}</td>
+            filteredFaculty.map((teacher, index) => (
+              <tr key={teacher._id}>
+                <td>{index + 1}</td>
+
                 <td>{teacher.name}</td>
+
                 <td>
                   <span className="dept-badge">
                     {teacher.department}
                   </span>
                 </td>
+
                 <td>
                   <span className="subject-badge">
                     {teacher.subject}
                   </span>
                 </td>
+
                 <td>{teacher.email}</td>
+
                 <td>
                   <div className="action-buttons">
                     <button
                       className="view-btn"
                       onClick={() =>
-                        navigate(`/faculty/${teacher.id}`)
+                        navigate(`/faculty/${teacher._id}`)
                       }
                     >
                       <FaEye />
                     </button>
 
-                    <button className="edit-btn">
+                    <button
+                      className="edit-btn"
+                      onClick={() =>
+                        navigate(`/faculty/edit/${teacher._id}`)
+                      }
+                    >
                       <FaEdit />
                     </button>
 
-                    <button className="delete-btn">
+                    <button
+                      className="delete-btn"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Delete this faculty member?"
+                          )
+                        ) {
+                          deleteFaculty(teacher._id);
+                        }
+                      }}
+                    >
                       <FaTrash />
                     </button>
                   </div>
@@ -93,10 +110,7 @@ function FacultyTable({ faculty }) {
             ))
           ) : (
             <tr>
-              <td
-                colSpan="6"
-                className="empty-table"
-              >
+              <td colSpan="6" className="empty-table">
                 No Faculty Found
               </td>
             </tr>
@@ -106,4 +120,5 @@ function FacultyTable({ faculty }) {
     </div>
   );
 }
+
 export default FacultyTable;
