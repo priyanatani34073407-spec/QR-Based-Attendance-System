@@ -5,12 +5,15 @@ import {
   FaUniversity,
 } from "react-icons/fa";
 
-function StudentCard({ students }) {
+function StudentCard({ students = [] }) {
   const totalStudents = students.length;
-  const totalBranches = new Set(
-    students.map((student) => student.branch)
+
+  const totalDepartments = new Set(
+    students.map((student) => student.department)
   ).size;
+
   const activeStudents = students.length;
+
   return (
     <div className="student-cards">
       <div className="student-card">
@@ -27,10 +30,11 @@ function StudentCard({ students }) {
 
       <div className="student-card">
         <FaUniversity className="card-icon" />
-        <h2>{totalBranches}</h2>
+        <h2>{totalDepartments}</h2>
         <p>Departments</p>
       </div>
     </div>
   );
 }
+
 export default StudentCard;

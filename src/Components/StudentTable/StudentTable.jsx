@@ -8,102 +8,68 @@ import {
 } from "react-icons/fa";
 import "./StudentTable.css";
 
-function StudentTable({ students, deleteStudent }) {
+function StudentTable({ students = [], deleteStudent }) {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");
 
   const filteredStudents = students.filter(
     (student) =>
-      student.name
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      student.rollNo
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      student.department
-        .toLowerCase()
-        .includes(search.toLowerCase())
+      student.name.toLowerCase().includes(search.toLowerCase()) ||
+      student.rollNo.toLowerCase().includes(search.toLowerCase()) ||
+      student.department.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="table-container">
-
       <div className="table-header">
-
         <h2>Students List</h2>
 
         <div className="search-box">
-
           <FaSearch className="search-icon" />
 
           <input
             type="text"
             placeholder="Search Student..."
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
+            onChange={(e) => setSearch(e.target.value)}
           />
-
         </div>
-
       </div>
 
       <table>
-
         <thead>
-
           <tr>
-
-            <th>ID</th>
-
-            <th>Name</th>
-
             <th>Roll No</th>
-
+            <th>Name</th>
             <th>Department</th>
-
             <th>Email</th>
-
             <th>Actions</th>
-
           </tr>
-
         </thead>
 
         <tbody>
-
           {filteredStudents.length > 0 ? (
-
             filteredStudents.map((student) => (
-
-              <tr key={student.id}>
-
-                <td>{student.id}</td>
+              <tr key={student._id}>
+                <td>{student.rollNo}</td>
 
                 <td>{student.name}</td>
 
-                <td>{student.rollNo}</td>
-
                 <td>
-
                   <span className="dept-badge">
                     {student.department}
                   </span>
-
                 </td>
 
                 <td>{student.email}</td>
 
                 <td>
-
                   <div className="action-buttons">
-
                     <button
                       className="view-btn"
                       onClick={() =>
-                        navigate(`/student/${student.id}`)
+                        navigate(`/student/${student._id}`)
                       }
                     >
                       <FaEye />
@@ -112,7 +78,7 @@ function StudentTable({ students, deleteStudent }) {
                     <button
                       className="edit-btn"
                       onClick={() =>
-                        navigate(`/student/edit/${student.id}`)
+                        navigate(`/student/edit/${student._id}`)
                       }
                     >
                       <FaEdit />
@@ -120,46 +86,23 @@ function StudentTable({ students, deleteStudent }) {
 
                     <button
                       className="delete-btn"
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            "Delete this student?"
-                          )
-                        ) {
-                          deleteStudent(student.id);
-                        }
-                      }}
-                    >
-                      <FaTrash />
+                      onClick={() => deleteStudent(student._id)}
+                      >
+                        <FaTrash />
                     </button>
-
                   </div>
-
                 </td>
-
               </tr>
-
             ))
-
           ) : (
-
             <tr>
-
-              <td
-                colSpan="6"
-                className="empty-table"
-              >
+              <td colSpan="5" className="empty-table">
                 No Students Found
               </td>
-
             </tr>
-
           )}
-
         </tbody>
-
       </table>
-
     </div>
   );
 }
