@@ -5,8 +5,9 @@ import {
   FaLayerGroup,
 } from "react-icons/fa";
 
-function SubjectCard({ subjects }) {
+function SubjectCard({ subjects = [] }) {
   const totalSubjects = subjects.length;
+
   const totalFaculty = new Set(
     subjects.map((subject) => subject.faculty)
   ).size;
@@ -14,6 +15,7 @@ function SubjectCard({ subjects }) {
   const totalSemesters = new Set(
     subjects.map((subject) => subject.semester)
   ).size;
+
   return (
     <div className="subject-cards">
       <div className="subject-card">
@@ -21,11 +23,13 @@ function SubjectCard({ subjects }) {
         <h2>{totalSubjects}</h2>
         <p>Total Subjects</p>
       </div>
+
       <div className="subject-card">
         <FaChalkboardTeacher className="card-icon" />
         <h2>{totalFaculty}</h2>
         <p>Faculty Assigned</p>
       </div>
+
       <div className="subject-card">
         <FaLayerGroup className="card-icon" />
         <h2>{totalSemesters}</h2>
@@ -34,4 +38,5 @@ function SubjectCard({ subjects }) {
     </div>
   );
 }
+
 export default SubjectCard;
