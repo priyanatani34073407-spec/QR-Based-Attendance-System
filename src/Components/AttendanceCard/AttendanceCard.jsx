@@ -5,7 +5,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-function AttendanceCard({ attendance }) {
+function AttendanceCard({ attendance = [] }) {
 
   const total = attendance.length;
 
@@ -18,43 +18,28 @@ function AttendanceCard({ attendance }) {
   ).length;
 
   return (
-
     <div className="attendance-cards">
 
       <div className="attendance-card">
-
-        <FaUsers className="card-icon"/>
-
+        <FaUsers className="card-icon" />
         <h2>{total}</h2>
-
         <p>Total Students</p>
-
       </div>
 
       <div className="attendance-card">
-
-        <FaUserCheck className="card-icon"/>
-
+        <FaUserCheck className="card-icon" />
         <h2>{present}</h2>
-
         <p>Present</p>
-
       </div>
 
       <div className="attendance-card">
-
-        <FaUserTimes className="card-icon"/>
-
+        <FaUserTimes className="card-icon" />
         <h2>{absent}</h2>
-
         <p>Absent</p>
-
       </div>
 
     </div>
-
   );
-
 }
 
 export default AttendanceCard;
