@@ -1,0 +1,36 @@
+.dashboard-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-card-icon {
+  width: 60px;
+  height: 60px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+
+.dashboard-card-content h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.dashboard-card-content p {
+  margin-top: 5px;
+  color: #666;
+}
