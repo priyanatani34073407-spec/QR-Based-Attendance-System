@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import api from "../../api/api";
 import "./EditStudents.css";
 
 function EditStudents() {
@@ -11,61 +12,91 @@ function EditStudents() {
   const [department, setDepartment] = useState("");
   const [email, setEmail] = useState("");
 
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+
   useEffect(() => {
-    const students =
-      JSON.parse(localStorage.getItem("students")) || [];
-
-    const student = students.find(
-      (student) => String(student.id) === id
-    );
-
-    if (student) {
-      setName(student.name);
-      setRollNo(student.rollNo);
-      setDepartment(student.department);
-      setEmail(student.email);
-    }
+    fetchStudent();
   }, [id]);
 
-  function updateStudent() {
+  async function fetchStudent() {
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await api.get(`/students/${id}`);
+
+      if (response.data.success) {
+        const student = response.data.student;
+
+        setName(student.name);
+        setRollNo(student.rollNo);
+        setDepartment(student.department);
+        setEmail(student.email);
+      } else {
+        setError("Student not found.");
+      }
+    } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+        setError(error.response.data.message);
+      } else {
+        setError("Unable to connect to the server.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function updateStudent() {
     if (
-      name === "" ||
-      rollNo === "" ||
-      department === "" ||
-      email === ""
+      !name.trim() ||
+      !rollNo.trim() ||
+      !department.trim() ||
+      !email.trim()
     ) {
-      alert("Please fill all fields");
+      alert("Please fill all fields.");
       return;
     }
 
-    const students =
-      JSON.parse(localStorage.getItem("students")) || [];
+    try {
+      setSaving(true);
 
-    const updatedStudents = students.map((student) =>
-      String(student.id) === id
-        ? {
-            ...student,
-            name,
-            rollNo,
-            department,
-            email,
-          }
-        : student
-    );
+      await api.put(`/students/${id}`, {
+        name,
+        rollNo,
+        department,
+        email,
+      });
 
-    localStorage.setItem(
-      "students",
-      JSON.stringify(updatedStudents)
-    );
+      alert("Student updated successfully.");
 
-    alert("Student Updated Successfully");
+      navigate("/students");
+    } catch (error) {
+      console.error(error);
 
-    navigate("/students");
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Unable to connect to the server.");
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  if (loading) {
+    return <h2>Loading student...</h2>;
+  }
+
+  if (error) {
+    return <h2>{error}</h2>;
   }
 
   return (
     <div className="edit-page">
-
       <h1>Edit Student</h1>
 
       <input
@@ -96,10 +127,12 @@ function EditStudents() {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <button onClick={updateStudent}>
-        Update Student
+      <button
+        onClick={updateStudent}
+        disabled={saving}
+      >
+        {saving ? "Updating..." : "Update Student"}
       </button>
-
     </div>
   );
 }
